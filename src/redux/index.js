@@ -4,7 +4,7 @@
  * @Author: power_840
  * @Date: 2021-01-21 21:11:14
  * @LastEditors: power_840
- * @LastEditTime: 2021-01-21 21:41:45
+ * @LastEditTime: 2021-01-21 21:44:27
  */
 
 import isPlainObject from "./utils/isPlainObject";
@@ -46,7 +46,7 @@ function createStore(reducer, perloadState) {
         return;
       }
       const index = currentListeners.indexOf(fn);
-      index && currentListeners.splice(index, 1);
+      index !== -1 && currentListeners.splice(index, 1);
     };
   }
   // redux初始化会执行一次reducer, 指向default
