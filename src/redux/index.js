@@ -4,11 +4,13 @@
  * @Author: power_840
  * @Date: 2021-01-21 21:11:14
  * @LastEditors: power_840
- * @LastEditTime: 2021-01-21 21:44:27
+ * @LastEditTime: 2021-01-26 20:30:43
  */
 
 import isPlainObject from "./utils/isPlainObject";
 import ActionTypes from "./ActionTypes";
+import combineReducers from "./combineReducers";
+import bindActionCreators from "./bindActionCreator";
 
 function createStore(reducer, perloadState) {
   let currentReducer = reducer;
@@ -59,4 +61,10 @@ function createStore(reducer, perloadState) {
   };
 }
 
-export default createStore;
+const result = {
+  bindActionCreators,
+  createStore,
+  combineReducers,
+};
+
+export default result;
