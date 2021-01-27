@@ -4,7 +4,7 @@
  * @Author: power_840
  * @Date: 2021-01-21 21:11:14
  * @LastEditors: power_840
- * @LastEditTime: 2021-01-26 20:30:43
+ * @LastEditTime: 2021-01-27 20:23:43
  */
 
 import isPlainObject from "./utils/isPlainObject";
@@ -21,11 +21,11 @@ function createStore(reducer, perloadState) {
   }
 
   function dispatch(action) {
-    if (action === undefined) {
-      return;
-    }
     if (!isPlainObject(action)) {
-      return;
+      throw new Error("action必须是一个纯对象");
+    }
+    if (action.type === undefined) {
+      throw new Error("action的type不能是undefined");
     }
     currentState = currentReducer(currentState, action);
     currentListeners.forEach((fn) => {
