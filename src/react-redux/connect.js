@@ -7,9 +7,9 @@
  * @LastEditTime: 2021-01-26 21:25:14
  */
 
-import { Component } from "react";
-import bindActionCreators from "../redux/bindActionCreator";
-import ReactContext from "./context";
+import { Component } from 'react';
+import bindActionCreators from '../redux/bindActionCreator';
+import ReactContext from './context';
 
 function connect(mapStateToProps, mapDispatchToProps) {
   return function (WrapperComponent) {
@@ -20,12 +20,12 @@ function connect(mapStateToProps, mapDispatchToProps) {
         this.state = mapStateToProps(context.store.getState());
       }
       componentDidMount() {
-        this.unsubcribe = this.context.store.substribe(() => {
+        this.unsubscribe = this.context.store.subscribe(() => {
           this.setState(mapStateToProps(this.context.store.getState()));
         });
       }
       componentWillUnmount() {
-        this.unsubcribe();
+        this.unsubscribe();
       }
       render() {
         const actions = bindActionCreators(
